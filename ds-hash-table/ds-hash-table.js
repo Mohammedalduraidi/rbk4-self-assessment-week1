@@ -9,7 +9,25 @@ var makeHashTable = function() {
       },
 
       insert: function(key, value) {
-        //your code is here
+        //i need the index but i really dont know where's the index in this case!
+        var checkkey = false
+        if(this._storage(key) === undefined){
+          this._storage(key,[])
+        }
+        //
+        var bucket = this._storage(key)
+        for(var i = 0; i<bucket.length; i++){
+          if(bucket[i][0]===key){
+             bucket [i][1] = value
+             checkkey = true
+          }
+          if (checkkey === false){
+            bucket.push([key,value])
+          }
+        }
+
+        }
+        
         this._storage[hashFn(key, max)] = value;
     }
   }
